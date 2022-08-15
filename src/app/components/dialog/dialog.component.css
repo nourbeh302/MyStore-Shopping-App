@@ -1,0 +1,39 @@
+.dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 16px;
+  box-shadow: var(--box-shadow-lg);
+  z-index: 3;
+  background: var(--light-base);
+
+  width: 800px;
+  height: 400px;
+
+  position: fixed;
+  top: -40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: all 500ms ease-in-out;
+  text-align: center;
+}
+
+.dialog.enabled {
+  top: 50%;
+}
+
+.dialog svg, .dialog-text {
+  fill: var(--success-base);
+  color: var(--success-base);
+}
+
+@media only screen and (max-width: 1024px) {
+  .dialog {
+    top: -60%;
+    width: 100%;
+    height: 100%;
+    border-radius: unset;
+  }  
+}

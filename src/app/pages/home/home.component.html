@@ -1,1 +1,8 @@
-<p>home works!</p>
+<h2>{{ title }}</h2>
+
+<app-dialog [message]="dialog.message" [isSuccessful]="dialog.isSuccessful"></app-dialog>
+
+<div class="products-list">
+  <app-product-item *ngFor="let product of products" [product]="product" (addToCartEvent)="addToCart($event)">
+  </app-product-item>
+</div>

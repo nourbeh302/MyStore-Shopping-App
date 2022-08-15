@@ -1,0 +1,40 @@
+form {
+  width: 400px;
+  margin-left: auto;
+}
+
+input {
+  margin-block-start: 4px;
+}
+
+.input-field > *:last-child {
+  margin-block-end: 16px;
+}
+
+span.text-error {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--danger-base);
+  font-size: 14px;
+  margin-top: 4px;
+}
+
+small {
+  display: flex;
+  justify-content: center;
+  color: var(--disabled-base);
+  text-align: center;
+}
+
+@media only screen and (max-width: 1024px) {
+  form {
+    margin-inline: auto;
+  }
+}
+
+@media only screen and (max-width: 625px) {
+  form {
+    width: 100%;
+  }
+}

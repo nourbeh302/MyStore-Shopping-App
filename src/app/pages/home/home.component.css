@@ -1,0 +1,15 @@
+.products-list {
+  padding-block-start: 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-gap: 32px;
+}
+
+app-product-item {
+  display: grid;
+  grid-template-rows: 200px auto;
+  box-shadow: var(--box-shadow-sm);
+  position: relative;
+
+  border-radius: 16px;
+}

@@ -1,1 +1,37 @@
-<p>cart works!</p>
+<div>
+  <h2>Total: $9.98</h2>
+  <div class="grid-container">
+    <ul>
+      <li>
+        <div class="cart-item">
+          <button class="btn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+              <path fill="none" d="M0 0h24v24H0z" />
+              <path
+                d="M12 10.586l4.95-4.95 1.414 1.414-4.95 4.95 4.95 4.95-1.414 1.414-4.95-4.95-4.95 4.95-1.414-1.414 4.95-4.95-4.95-4.95L7.05 5.636z" />
+            </svg>
+          </button>
+          <div class="cart-item-image product-image">
+            <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Cup" width="100%" height="100%">
+          </div>
+          <div class="cart-item-body">
+            <p>Cup</p>
+            <p>$4.99</p>
+            <input type="number" min="1" max="10" placeholder="Amount" name="_cup" id="_5">
+          </div>
+        </div>
+      </li>
+    </ul>
+
+    <app-form></app-form>
+  </div>
+</div>
+
+<!-- <div class="empty-cart">
+  <img src="../../../assets/empty-cart-cuate.png" alt="" width="100%">
+  <h2 style="text-align: center;">Your cart is empty</h2>
+  <p>Seems like you haven't added any products to the cart yet.</p>
+  <a routerLink="">
+    <button class="btn-text btn-primary">Go to products</button>
+  </a>
+</div> -->

@@ -1,1 +1,25 @@
-<p>details works!</p>
+<app-dialog [message]="dialog.message" [isSuccessful]="dialog.isSuccessful"></app-dialog>
+
+<div class="product-details">
+  <div class="product-image">
+    <img src="{{ product.url }}" alt="{{ product.name }}" width="100%" height="100%">
+  </div>
+  <div class="product-body">
+    <div>
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <p>Price: <strong>${{ product.price }}</strong></p>
+    </div>
+    <div>
+      <div class="btn-group">
+        <input type="number" class="btn-text" min="1" max="10" placeholder="Enter the amount">
+        <button class="btn-text btn-primary" (click)="addToCart(product)" [disabled]="!product.amount">Add to cart</button>
+      </div>
+      <a routerLink="">
+        <button>
+          <span>Back to products list</span>
+        </button>
+      </a>
+    </div>
+  </div>
+</div>

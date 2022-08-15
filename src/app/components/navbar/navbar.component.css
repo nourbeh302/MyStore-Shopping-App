@@ -1,0 +1,19 @@
+nav {
+  padding: 32px 10%;
+  box-shadow: var(--box-shadow-sm);
+  display: flex;
+  justify-content: space-between;
+}
+
+a::after {
+  content: "";
+  display: block;
+  background: var(--dark-base);
+  width: 0;
+  height: 1.5px;
+  transition: all 250ms ease-in-out;
+}
+
+a:hover::after {
+  width: 100%;
+}
