@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Feedback } from 'src/app/models/Feedback';
 import { Product } from 'src/app/models/Product';
 
+import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -17,19 +20,17 @@ export class HomeComponent implements OnInit {
     message: ''
   }
 
-  constructor() { }
+  constructor(private productService: ProductService, private cartService: CartService) { }
 
   ngOnInit(): void {
-    fetch('../../../assets/data.json')
-      .then(res => res.json())
-      .then(data => {
-        this.products = data.map((p: Product) => {
-          return { ...p, amount: 1 }
-        })
-      })
+    this.productService.getProducts().subscribe(res => this.products = res.map(p => {
+      return { ...p, amount: 1 }
+    }))
   }
 
   addToCart(product: Product): void {
+    this.cartService.addToCart(product)
+
     this.dialog = { isSuccessful: true, message: `Added ${product.name.toLowerCase()} to the cart` }
     setTimeout(() => this.dialog.isSuccessful = false, 1000);
   }

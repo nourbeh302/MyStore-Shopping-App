@@ -1,9 +1,8 @@
-<form>
-
+<form #form="ngForm" (ngSubmit)="checkout()">
   <div class="input-field">
     <label for="_full-name">Full Name</label>
-    <input type="text" required name="_full-name" placeholder="Minimum 3 characters" minlength="3" maxlength="32" autocomplete="off">
-    <span class="text-error">
+    <input type="text" [(ngModel)]="order.name" (ngModelChange)="validateName($event)" required name="_full-name" placeholder="Minimum 3 characters" minlength="3" maxlength="32" autocomplete="off">
+    <span class="text-error" *ngIf="nameIsInvalid">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
         <path fill="none" d="M0 0h24v24H0z" />
         <path
@@ -16,8 +15,8 @@
 
   <div class="input-field">
     <label for="_address">Address</label>
-    <input type="text" name="_address" required placeholder="Minimum 6 characters" minlength="6" maxlength="64" autocomplete="off">
-    <span class="text-error">
+    <input type="text" [(ngModel)]="order.address" (ngModelChange)="validateAddress($event)" name="_address" required placeholder="Minimum 6 characters" minlength="6" maxlength="64" autocomplete="off">
+    <span class="text-error" *ngIf="addressIsInvalid">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18">
         <path fill="none" d="M0 0h24v24H0z" />
         <path
@@ -30,8 +29,8 @@
 
   <div class="input-field">
     <label for="_card-number">Credit Card</label>
-    <input type="text" name="_card-number" required placeholder="16-digit number" minlength="16" maxlength="16" autocomplete="off">
-    <span class="text-error">
+    <input type="text" [(ngModel)]="order.cardNumber" (ngModelChange)="validateCreditCardNumber($event)" name="_card-number" required placeholder="16-digit number" minlength="16" maxlength="16" autocomplete="off">
+    <span class="text-error" *ngIf="creditCardIsInvalid">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
         <path fill="none" d="M0 0h24v24H0z" />
         <path
@@ -43,8 +42,9 @@
   </div>
 
   <div class="btn-group">
-    <button class="btn-text btn-secondary" type="reset">Clear</button>
-    <button class="btn-text btn-primary" type="submit" disabled>Checkout</button>
+    <button class="btn-text btn-secondary" type="button" (click)="emitClearCart()">Clear</button>
+    <button class="btn-text btn-primary" type="submit"
+      [disabled]="form.invalid || nameIsInvalid || addressIsInvalid || creditCardIsInvalid">Checkout</button>
   </div>
   <small>We'll never share your payment details to anyone else.</small>
 </form>

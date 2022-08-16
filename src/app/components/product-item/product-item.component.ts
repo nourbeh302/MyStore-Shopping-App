@@ -12,7 +12,7 @@ export class ProductItemComponent implements OnInit {
   @Input() product: Product
   @Output() addToCartEvent: EventEmitter<Product> = new EventEmitter<Product>()
 
-  constructor() { 
+  constructor() {
     this.product = {
       id: 0,
       name: '',

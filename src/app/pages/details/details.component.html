@@ -12,7 +12,7 @@
     </div>
     <div>
       <div class="btn-group">
-        <input type="number" class="btn-text" min="1" max="10" placeholder="Enter the amount">
+        <input type="number" class="btn-text" min="1" max="10" placeholder="Enter the amount" [(ngModel)]="product.amount" name="_{{ product.name }}">
         <button class="btn-text btn-primary" (click)="addToCart(product)" [disabled]="!product.amount">Add to cart</button>
       </div>
       <a routerLink="">

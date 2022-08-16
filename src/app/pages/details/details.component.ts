@@ -4,6 +4,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { Feedback } from 'src/app/models/Feedback';
 
+import { CartService } from 'src/app/services/cart.service';
+import { ProductService } from 'src/app/services/product.service';
+
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
@@ -15,6 +18,8 @@ export class DetailsComponent implements OnInit {
   dialog: Feedback = { isSuccessful: false, message: '' }
 
   constructor(
+    private productService: ProductService,
+    private cartService: CartService,
     private route: ActivatedRoute
   ) {
     this.product = {
@@ -27,18 +32,18 @@ export class DetailsComponent implements OnInit {
     }
   }
 
+  /**
+  * When the component renders, it gets a single product based on the url params 
+  */
   ngOnInit(): void {
-    this.product = {
-      id: 5,
-      name: 'Cup',
-      price: 4.99,
-      url: 'https://images.unsplash.com/photo-1517256064527-09c73fc73e38?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80',
-      description: 'Drink anything with it!',
-      amount: 1
-    }
+    this.route.queryParams.subscribe(params =>
+      this.productService.getProducts().subscribe(res => this.product = res[params['id'] - 1])
+    )
   }
 
   addToCart(product: Product) {
+    this.cartService.addToCart(product)
+    
     this.dialog = { isSuccessful: true, message: `Added ${product.amount} ${product.name.toLowerCase()}(s) to the cart` }
     setTimeout(() => this.dialog.isSuccessful = false, 1000);
   }
